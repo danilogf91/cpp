@@ -1,21 +1,28 @@
-#include <bitset>
 #include <iostream>
 
 int main ()
 {
-  int x { 12 };
-  std::cout << x << '\n';                     // decimal predeterminado
-  std::cout << std::hex << x << '\n';         // hexadecimal
-  std::cout << std::oct << x << '\n';         // octal
-  std::cout << std::dec << x << '\n';         // vuelve a decimal
-  std::cout << x << '\n';                     // decimal  
+  constexpr double gravedad { 9.8 };  // correcto, el valor de 9.8 puede ser resuleto en tiempo de compilacion
+  constexpr int suma { 2+3 }; // correcto, el valor de 2+3 puede ser resuleto en tiempo de compilacion
 
-  // std::bitset<8> significa que queremos almacenar 8 bits
-  std::bitset<8> bin1{ 0b1100'0101};  // literal binario para binario 1100 0101
-  std::bitset<8> bin2{ 0xC5}; // literal hexadecimal para binario 1100 0101
+  std::cout << "Escribe tu edad: ";
+  int edad {};
+  std::cin >> edad;
+  
+  constexpr int suEdad { edad }; // error de compilacion: edad es una constante rutime, no una constante en tiempo de compilacion
 
-  std::cout << bin1 << ' ' << bin2 << '\n';
-  std::cout << std::bitset<4>{0b1010} << '\n'; // podemos imprimir desde std::bitset directamente
+
+  // literales simbolicas con numero magicos
+  int aforoMax { salas * 30 };
+  setMax (30);
+
+  // literales simbolicas con el uso de macros
+#define MAX_AFORO_POR_SALA 30
+  int aforoMax { salas * MAX_AFORO_POR_SALA };
+
+  // Es mejor practiva usar constexpr que macros por depuracion
+  constexpr int maxAforoPorSala { 30 };
+  constexpr int maxNumLetrasNombre { 30 };
 
   return 0;
 }
