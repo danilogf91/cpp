@@ -1,25 +1,21 @@
 #include <iostream>
-#include <string.h>
+int main()
+{ // bloque 1, nivel de anidamiento 1
+    std::cout << "Escribe un entero: ";
+    int valor{};
+    std::cin >> valor;
 
-int main ()
-{
+    if (valor > 0)
+    { // bloque 2, nivel de anidamiento 2
+        if ((valor % 2) == 0)
+        { // bloque 3, nivel de anidamiento 3
+            std::cout << valor << " es positivo y par\n";
+        }
+        else
+        { // bloque 4, también anidado a nivel 3
+            std::cout << valor << " es positivo e impar\n";
+        }
+    }
 
-  setlocale (LC_ALL, "es_ES.UTF-8");
-  bool x = false;
-  bool y = false;
-  bool z = true;
-  bool a = false;
-  bool b = false;
-  bool c = true;
-
-  if((x == true || y == true || z == true) && a == true)
-    std::cout << "Hoy no puedo ir a trabajar, estoy enfermo " << '\n';
-  else if ( ( x == true || y == true || z == true ) && b == true )
-    std::cout << "Hoy no puedo ir a trabajar, estoy de mudanza " << '\n';
-  else if ( ( x == true || y == true || z == true ) && c == true )
-    std::cout << "Me ha tocado la quiniela. Dile al jefe que c$@$#/~S " << '\n';
-  else
-    std::cout << "Hoy tengo que ir a trabajar, me he quedado sin disculpas " << '\n';
-      
-  return 0;
+    return 0;
 }
